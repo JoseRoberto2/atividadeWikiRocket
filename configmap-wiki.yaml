@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wiki-config
+  labels:
+    app: wiki
+  namespace: atividade
+data:
+  DB_TYPE: postgres
+  DB_HOST: postgres
+  DB_PORT: "5432"
+  DB_USER: postgresadmin
+  DB_PASS: admin123
+  DB_NAME: db_wiki
+  

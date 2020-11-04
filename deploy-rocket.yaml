@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rocketchat
+  namespace: atividade
+  labels:
+    app: rocketchat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rocketchat
+  template:
+    metadata:
+      labels:
+        app: rocketchat
+    spec:
+      containers:
+        - name: rocketchat
+          image: rocketchat/rocket.chat
+          ports:
+            - containerPort: 3001
+          envFrom:
+            - configMapRef:
+                name: rocketchat-config

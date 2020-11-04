@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wiki
+  namespace: atividade
+  labels:
+    app: wiki
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wiki
+  template:
+    metadata:
+      labels:
+        app: wiki
+    spec:
+      containers:
+        - name: wiki
+          image: requarks/wiki:2
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: wiki-config
